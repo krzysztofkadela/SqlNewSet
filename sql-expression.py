@@ -40,7 +40,14 @@ track_table = Table(
 with db.connect() as connection:
 
     # Query1 -select all records from the "Artist" table
-     select_query = artist_table.select()
+     #select_query = artist_table.select()
+
+     # Query 2 - select 
+     select_query = artist_table.select().where(artist_table.c.Name == "Queen")
+     # Query 3
+     # select_query = artist_table.select().where(artist_table.c.Composer == "Queen")
+     # Query 4
+     select_query = track_table.select().where(track_table.c.Composer == "Queen")
 
      results = connection.execute(select_query)
      for result in results:
